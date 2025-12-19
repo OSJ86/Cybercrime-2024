@@ -3,105 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oliver Stefan Jelinek – Dokumentation eines mutmaßlichen Cybercrime-Falls</title>
-  <meta name="description" content="Öffentliche Kurzseite: Oliver Stefan Jelinek dokumentiert einen mutmaßlichen Cybercrime-Fall (Zeitachse, Stand, Kontakt)." />
+  <title>Kontakt</title>
+  <meta name="description" content="Kontaktformular: Name, E-Mail, Telefonnummer und Nachricht." />
+
   <style>
     :root{
-      --bg:#0b0f16; --card:#111827; --text:#e5e7eb; --muted:#9ca3af;
-      --line:#1f2937; --accent:#60a5fa; --accent2:#a78bfa; --warn:#fbbf24; --ok:#34d399;
+      --bg1:#070a14;
+      --bg2:#0b1020;
+      --panel:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.16);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --accent:#7c5cff;
+      --accent2:#2dd4bf;
+      --shadow:0 18px 70px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1050px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(96,165,250,.18), transparent 60%),
-        radial-gradient(800px 500px at 80% 0%, rgba(167,139,250,.14), transparent 55%),
-        var(--bg);
-      color:var(--text); line-height:1.55;
+        radial-gradient(900px 600px at 10% 10%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(900px 600px at 90% 30%, rgba(45,212,191,.25), transparent 55%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg1) 100%);
+      min-height:100vh;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 70px}
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 18px 80px;}
     header{
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding:16px 0; border-bottom:1px solid var(--line);
-      position:sticky; top:0; backdrop-filter: blur(10px);
-      background: rgba(11,15,22,.65); z-index:10;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 10px 0 18px;
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,16,32,.85) 0%, rgba(11,16,32,.45) 60%, transparent 100%);
     }
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(96,165,250,.9), rgba(167,139,250,.9));
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    .brand{display:flex; gap:10px; align-items:center; text-decoration:none;}
+    .dot{
+      width:12px;height:12px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,92,255,.18);
     }
-    .brand strong{display:block; font-size:14px; letter-spacing:.2px}
-    .brand span{display:block; font-size:12px; color:var(--muted)}
-    nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{font-size:13px; color:var(--text); opacity:.9}
-    nav a:hover{opacity:1}
-    .hero{padding:28px 0 14px; display:grid; gap:12px}
-    .kicker{display:flex; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:13px}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      background: rgba(17,24,39,.65); border:1px solid rgba(31,41,55,.9);
-      font-size:12px; color:var(--muted);
+    nav{display:flex; gap:10px; flex-wrap:wrap}
+    nav a{
+      text-decoration:none; padding:10px 12px; border-radius:999px;
+      color:var(--muted);
+    }
+    nav a:hover{background:var(--panel); color:var(--text)}
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns: 1.05fr .95fr;
+      align-items:start;
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .pad{padding: 18px;}
+    h1{margin:0 0 8px; font-size: clamp(26px, 3.5vw, 40px); letter-spacing:-.4px;}
+    p{margin:0; color:var(--muted); line-height:1.65}
+
+    /* Hero image block (no external images needed) */
+    .heroImg{
+      position:relative;
+      height: 220px;
+      background:
+        radial-gradient(700px 240px at 20% 30%, rgba(124,92,255,.55), transparent 60%),
+        radial-gradient(700px 240px at 80% 30%, rgba(45,212,191,.45), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom: 1px solid var(--line);
+    }
+    .heroImg:after{
+      content:"";
+      position:absolute; inset: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+    .badges{
+      position:absolute; left: 28px; bottom: 22px;
+      display:flex; gap:8px; flex-wrap:wrap; z-index:2;
     }
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(31,41,55,.9);
-      background: rgba(11,15,22,.35); color:var(--muted); font-size:12px;
+      font-size:12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(124,92,255,.18);
+      border: 1px solid rgba(124,92,255,.30);
+      color: rgba(255,255,255,.88);
     }
-    .dot{width:8px; height:8px; border-radius:999px; background:var(--ok)}
-    .dot.warn{background:var(--warn)}
-    h1{margin:0; font-size:34px; line-height:1.15; letter-spacing:-.5px}
-    .lead{margin:0; color:var(--muted); font-size:16px; max-width:78ch}
-    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .badge.alt{
+      background: rgba(45,212,191,.14);
+      border-color: rgba(45,212,191,.30);
+    }
+
+    form{display:grid; gap:10px; margin-top: 10px}
+    label{font-size: 13px; color: rgba(255,255,255,.78)}
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:130px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(124,92,255,.55)}
+    .row{display:grid; gap:10px; grid-template-columns: 1fr 1fr;}
+    .hint{font-size:12px; color: rgba(255,255,255,.55)}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(96,165,250,.95), rgba(167,139,250,.95));
-      color:#0b0f16; font-weight:700; font-size:13px; border:0;
+      display:inline-flex; justify-content:center; align-items:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      text-decoration:none;
+      cursor:pointer;
     }
-    .btn.secondary{
-      background: rgba(17,24,39,.72); color: var(--text);
-      border:1px solid rgba(31,41,55,.9);
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(45,212,191,.85));
+      color:#06121a;
+      font-weight: 700;
     }
-    .grid{display:grid; gap:14px; margin-top:16px; grid-template-columns:1fr}
-    @media (min-width: 900px){ .grid{grid-template-columns: 1.2fr .8fr} }
-    .card{
-      background: rgba(17,24,39,.72);
-      border:1px solid rgba(31,41,55,.9);
-      border-radius:18px;
-      padding:18px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    .btn:hover{transform: translateY(-1px)}
+    .infoList{display:grid; gap:10px; margin-top: 12px}
+    .info{
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
     }
-    .card h2{margin:0 0 10px; font-size:16px}
-    .card p{margin:0 0 10px; color:var(--muted)}
-    .list{margin:0; padding-left:18px; color:var(--muted)}
-    .list li{margin:6px 0}
-    .divider{height:1px; background:rgba(31,41,55,.9); margin:12px 0}
-    section{scroll-margin-top:84px; margin-top:14px}
-    .timeline{display:grid; gap:10px}
-    .event{
-      border:1px solid rgba(31,41,55,.9);
-      background: rgba(11,15,22,.35);
-      border-radius:14px;
-      padding:12px 14px;
+    .info strong{display:block; margin-bottom:4px}
+    footer{
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
     }
-    .event b{color:var(--text)}
-    .event .meta{font-size:12px; color:var(--muted); margin-bottom:6px}
-    .small{font-size:12px; color:var(--muted)}
-    .footer{
-      margin-top:24px; border-top:1px solid var(--line); padding-top:14px;
-      color:var(--muted); font-size:12px; display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between;
-    }
-    .quote{
-      border-left:3px solid rgba(96,165,250,.7);
-      padding:8px 12px; margin:10px 0 0;
-      background: rgba(11,15,22,.25); color:var(--muted); border-radius:10px;
-      font-size:13px;
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr}
+      .row{grid-template-columns: 1fr}
     }
   </style>
 </head>
@@ -109,211 +162,100 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <strong>Oliver Stefan Jelinek</strong>
-          <span>Öffentliche Kurzseite · mutmaßlicher Cybercrime-Fall</span>
-        </div>
-      </div>
-      <nav aria-label="Navigation">
-        <a href="#kurz">Kurzinfo</a>
-        <a href="#zeitachse">Zeitachse</a>
-        <a href="#belege">Belege</a>
-        <a href="#gesucht">Gesucht</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#impressum">Impressum</a>
+      <a class="brand" href="#">
+        <span class="dot"></span>
+        <strong>Kontakt</strong>
+      </a>
+      <nav>
+        <a href="#formular">Formular</a>
+        <a href="#info">Info</a>
       </nav>
     </header>
 
-    <main>
-      <div class="hero" id="kurz">
-        <div class="kicker">
-          <span class="pill">Sachdarstellung · Dokumentation</span>
-          <span class="pill">Hinweise willkommen</span>
-          <span class="badge"><span class="dot"></span> Seite online</span>
-          <span class="badge"><span class="dot warn"></span> Öffentlich & vorsichtig formuliert</span>
-        </div>
-
-        <h1>Dokumentation eines mutmaßlichen Cybercrime-Falls</h1>
-        <p class="lead">
-          Ich dokumentiere hier in Kurzform Ereignisse, die aus meiner Sicht auf unbefugte Zugriffe,
-          Manipulationen oder Ausspähung hindeuten. Diese Seite dient der Information und Kontaktaufnahme
-          (Presse/IT-Forensik/Recht).
-        </p>
-
-        <div class="btnrow">
-          <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
-          <a class="btn secondary" href="#zeitachse">Zeitachse ansehen</a>
-        </div>
-
-        <p class="small">Letzte Aktualisierung: <span id="lastUpdated"></span></p>
-      </div>
-
-      <div class="grid">
-        <section class="card">
-          <h2>Wichtiger Hinweis</h2>
-          <p>
-            Ich nenne auf dieser öffentlichen Seite bewusst <b>keine identifizierenden Namen</b> und treffe
-            <b>keine endgültigen Schuldzuweisungen</b>. Es handelt sich um meine Dokumentation und Wahrnehmung.
-            Es gilt die Unschuldsvermutung.
-          </p>
-          <div class="quote">
-            Wenn du eine detaillierte Version (mit Aktenzeichen, Screenshots, Logs, Namen, Orten) benötigst:
-            das teile ich nur gezielt und sicher (z. B. verschlüsselt) mit zuständigen Stellen/Fachleuten.
-          </div>
-        </section>
-
-        <aside class="card">
-          <h2>Kurzübersicht</h2>
-          <ul class="list">
-            <li><b>Ort:</b> u. a. Österreich (Saalbach-Hinterglemm), Deutschland (Nürnberg, Heidenheim)</li>
-            <li><b>Geräte:</b> iPhone 14, Laptop</li>
-            <li><b>Schlüsselereignisse:</b> 18.06.2024 / 07.06.2025</li>
-            <li><b>Kontakt:</b> <a href="mailto:olivers.jelinek@outlook.de">olivers.jelinek@outlook.de</a></li>
-          </ul>
-          <div class="divider"></div>
-          <p class="small">
-            Ich suche seriöse Unterstützung: technische Einordnung, forensische Hilfe, rechtliche Einschätzung,
-            journalistische Anfragen.
-          </p>
-        </aside>
-      </div>
-
-      <section id="zeitachse" class="card">
-        <h2>Zeitachse (Kurzfassung)</h2>
-
-        <div class="timeline">
-          <div class="event">
-            <div class="meta">18.06.2024 · Saalbach-Hinterglemm (AT)</div>
-            <div><b>Ereignis:</b> Physische Auseinandersetzung um mein Smartphone (iPhone 14).</div>
-            <div class="small">
-              <b>Beobachtung danach:</b> iOS-Akkustatistik zeigte ungewöhnlich hohen Verbrauch (teils 200%+),
-              zudem traten Auffälligkeiten auf (u. a. selbstständige Nachrichten/Sendungen).
-            </div>
-          </div>
-
-          <div class="event">
-            <div class="meta">Vor 07.06.2025 · Nürnberg (DE)</div>
-            <div><b>Ereignis:</b> Wiederholte Probleme mit Postzustellung sowie Verdacht auf Öffnen/Manipulation.</div>
-            <div class="small">
-              <b>Hinweis:</b> Öffentlich nur als Verdacht/Wahrnehmung dokumentiert; Details/Belege liegen vor und werden bei Bedarf gezielt geteilt.
-            </div>
-          </div>
-
-          <div class="event">
-            <div class="meta">07.06.2025 · (DE)</div>
-            <div><b>Ereignis:</b> Feststellung eines Keyloggers auf meinem Laptop.</div>
-            <div class="small">
-              <b>Kontext:</b> Zuvor gab es eine Einordnung durch eine Behörde, die ich als falsch empfinde.
-              Nach meinem Stand wurde eine „Psychose“-Unterstellung durch <b>zwei unabhängige ärztliche Einschätzungen</b> nicht bestätigt.
-            </div>
-          </div>
-
-          <div class="event">
-            <div class="meta">Nach Anordnung von Ermittlungen in Österreich · (DE)</div>
-            <div><b>Ereignis:</b> Zunahme von Beobachtungs-/Nachstellungswahrnehmungen.</div>
-            <div class="small">
-              <b>Wichtig:</b> Das ist eine subjektive Wahrnehmung; ich kann öffentlich keine sichere Zuordnung treffen.
-            </div>
-          </div>
-
-          <div class="event">
-            <div class="meta">Wohnortwechsel · Heidenheim (DE)</div>
-            <div><b>Ereignis:</b> Erneute Probleme mit Postzustellung/Unregelmäßigkeiten (Verdacht).</div>
+    <div class="grid">
+      <!-- Left: Form -->
+      <section class="card" id="formular">
+        <div class="heroImg">
+          <div class="badges">
+            <span class="badge">Modern</span>
+            <span class="badge alt">Mobilfreundlich</span>
+            <span class="badge">Netlify Forms</span>
           </div>
         </div>
 
-        <div class="divider"></div>
-        <p class="small">
-          Ich führe dazu eine strukturierte Dokumentation (Zeitachsen, Screenshots, Logauszüge, Geräte-/Account-Historien).
-          Öffentliche Details sind bewusst reduziert, um Persönlichkeitsrechte und laufende Verfahren nicht zu gefährden.
-        </p>
-      </section>
+        <div class="pad">
+          <h1>Schreib mir eine Nachricht</h1>
+          <p>Trage bitte deinen Namen, E-Mail und Telefonnummer ein. Optional kannst du eine Nachricht hinzufügen.</p>
 
-      <section id="belege" class="card">
-        <h2>Was ich belegen kann (Beispielkategorien)</h2>
-        <p>Ich kann – je nach Bedarf und Empfänger – u. a. folgende Artefakte bereitstellen:</p>
-        <ul class="list">
-          <li>iOS-Screenshots zur Akku-/Aktivitätsanzeige und Auffälligkeiten</li>
-          <li>Geräte- und Account-Zeitachsen (Daten/Orte/Änderungen soweit verfügbar)</li>
-          <li>Malware-/Keylogger-Fund: Befund, Hashes, Quarantäne-/AV-Logs, Systemereignisse</li>
-          <li>Post-/Zustellauffälligkeiten: Fotos, Zeitpunkte, Zeugenhinweise (falls vorhanden)</li>
-          <li>Ärztliche Einschätzungen (nur mit Einwilligung/gezielt, keine öffentliche Veröffentlichung)</li>
-        </ul>
-        <div class="divider"></div>
-        <p class="small">
-          Ich teile sensible Daten nur datenschutzkonform und möglichst verschlüsselt.
-        </p>
-      </section>
+          <!-- Netlify Forms: works after first deploy -->
+          <form name="kontakt" method="POST" data-netlify="true">
+            <!-- Netlify required hidden field -->
+            <input type="hidden" name="form-name" value="kontakt" />
 
-      <section id="gesucht" class="card">
-        <h2>Gesucht / Call to Action</h2>
-        <p>
-          Ich suche seriöse Unterstützung und Kontakte – insbesondere:
-        </p>
-        <ul class="list">
-          <li><b>IT-Forensik / Incident Response:</b> strukturierte Auswertung, Beweissicherung, Hypothesenprüfung</li>
-          <li><b>Recht (Strafrecht/IT-Recht/Opferschutz):</b> Einordnung, Strategie, Kommunikation mit Stellen</li>
-          <li><b>Presse:</b> sachliche Berichterstattung über Betroffenenperspektive, Behördenkommunikation, digitale Risiken</li>
-        </ul>
-        <div class="quote">
-          Wenn du helfen willst: Bitte kurz schreiben, wer du bist (Rolle/Organisation) und welche Infos du brauchst.
+            <div>
+              <label for="name">Name *</label>
+              <input id="name" name="name" type="text" required placeholder="Max Mustermann" />
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="email">E-Mail *</label>
+                <input id="email" name="email" type="email" required placeholder="max@beispiel.de" />
+              </div>
+              <div>
+                <label for="phone">Telefonnummer</label>
+                <input id="phone" name="phone" type="tel" placeholder="+49 170 1234567" />
+              </div>
+            </div>
+
+            <div>
+              <label for="subject">Betreff</label>
+              <input id="subject" name="subject" type="text" placeholder="Worum geht es?" />
+            </div>
+
+            <div>
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" placeholder="Deine Nachricht …"></textarea>
+              <div class="hint">Hinweis: Bitte keine sensiblen Daten (z. B. Passwörter) eintragen.</div>
+            </div>
+
+            <button class="btn primary" type="submit">Absenden</button>
+            <div class="hint">Nach dem ersten Deploy findest du Einsendungen in Netlify unter <b>Forms</b>.</div>
+          </form>
         </div>
       </section>
 
-      <section id="kontakt" class="card">
-        <h2>Kontakt</h2>
-        <p>Seriöse Anfragen/Hinweise bitte an:</p>
-        <ul class="list">
-          <li><b>E-Mail:</b> <a href="mailto:olivers.jelinek@outlook.de">olivers.jelinek@outlook.de</a></li>
-          <li><b>Betreff-Vorschlag:</b> „Hinweis / Forensik / Presse – Cybercrime-Dokumentation“</li>
-        </ul>
-        <div class="divider"></div>
-        <p class="small">
-          Bitte keine sensiblen Daten unverschlüsselt senden. Wenn nötig: wir klären PGP/Signal oder einen sicheren Upload-Weg.
-        </p>
-      </section>
+      <!-- Right: Info -->
+      <aside class="card" id="info">
+        <div class="pad">
+          <h2>Kontaktinfos</h2>
+          <p>Optional kannst du hier feste Kontaktinfos ergänzen (oder weglassen).</p>
 
-      <section id="impressum" class="card">
-        <h2>Impressum</h2>
-        <p class="small">
-          <b>Angaben gemäß § 5 TMG</b> (bitte ausfüllen – in Deutschland i. d. R. erforderlich):<br/>
-          Name: Oliver Stefan Jelinek<br/>
-          Anschrift: [Straße, PLZ, Ort]<br/>
-          Kontakt: <a href="mailto:olivers.jelinek@outlook.de">olivers.jelinek@outlook.de</a><br/>
-        </p>
+          <div class="infoList">
+            <div class="info">
+              <strong>E-Mail</strong>
+              <span class="hint">olivers.jelinek@outlook.de</span>
+            </div>
+            <div class="info">
+              <strong>Telefon</strong>
+              <span class="hint">+49 …</span>
+            </div>
+            <div class="info">
+              <strong>Hinweis</strong>
+              <span class="hint">Diese Seite dient nur zur Kontaktaufnahme.</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
 
-        <div class="divider"></div>
-
-        <h2>Datenschutzerklärung</h2>
-        <p class="small">
-          Diese Seite läuft ohne Tracking/Analytics. Beim Hosting können technisch notwendige Logfiles entstehen
-          (IP, Zeitpunkt, User-Agent).<br/><br/>
-          Platzhalter: [Hosting-Anbieter], [Speicherdauer], [Kontaktaufnahme per E-Mail], [Rechte nach DSGVO].<br/>
-        </p>
-
-        <div class="divider"></div>
-
-        <p class="small">
-          <b>Rechtlicher Hinweis:</b> Dies ist eine Darstellung aus meiner Perspektive. Sie ersetzt keine
-          behördliche oder gerichtliche Feststellung. Es gilt die Unschuldsvermutung.
-        </p>
-      </section>
-
-      <div class="footer">
-        <div>© <span id="year"></span> Oliver Stefan Jelinek</div>
-        <div class="small">Öffentliche Kurzseite · Stand: <span id="lastUpdated2"></span></div>
-      </div>
-    </main>
+    <footer>
+      © <span id="y"></span> • Kontaktseite • Hosted via Netlify
+    </footer>
   </div>
 
   <script>
-    const now = new Date();
-    const fmt = now.toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
-    document.getElementById("year").textContent = String(now.getFullYear());
-    document.getElementById("lastUpdated").textContent = fmt;
-    document.getElementById("lastUpdated2").textContent = fmt;
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
