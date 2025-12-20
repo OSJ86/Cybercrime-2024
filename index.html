@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cybersicherheit – nachhaltig schützen vor Cyberkriminalität</title>
+  <meta name="description" content="Praxisnaher Leitfaden: So schützt du Smartphone, PC und Konten nachhaltig vor Cyberkriminalität. Phishing, Passwörter, MFA, Backups, Gerätehärtung – inkl. Checkliste & Kontakt." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cybersicherheit – nachhaltig schützen" />
+  <meta property="og:description" content="Schutz vor Cyberkriminalität: klare Schritte, Checkliste, Notfallplan & Kontakt." />
+  <meta property="og:type" content="website" />
+
+  <!--
+    Datenschutz-Hinweis:
+    - Keine externen Fonts, keine CDNs, kein Tracking.
+    - Wenn du später YouTube/Maps/Analytics einbindest, musst du die Datenschutzerklärung anpassen.
+  -->
+
+  <style>
+    :root{
+      --bg:#070A12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text:#EEF2FF;
+      --muted: rgba(238,242,255,.72);
+      --line: rgba(255,255,255,.10);
+      --ok: #34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --a:#60a5fa;
+      --b:#a78bfa;
+      --c:#22c55e;
+
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(96,165,250,.22), transparent 60%),
+        radial-gradient(900px 650px at 80% 20%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(900px 650px at 60% 90%, rgba(34,197,94,.12), transparent 60%),
+        linear-gradient(180deg, #070A12 0%, #050711 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit }
+    .container{ width:min(1120px, calc(100% - 40px)); margin:0 auto; }
+
+    /* Top Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.60);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+    }
+    .brand-mark{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(96,165,250,.95), rgba(167,139,250,.95));
+      box-shadow: var(--shadow2);
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .brand-title{ font-weight:750; letter-spacing:.2px; line-height:1.1; }
+    .brand-sub{ font-size:12px; color:var(--muted); margin-top:2px; }
+
+    .nav-links{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:14px; color:var(--muted);
+    }
+    .nav-links a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Hero */
+    .hero{ padding:56px 0 26px; position:relative; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns:1fr; }
+    }
+
+    .card{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{ padding:26px; position:relative; overflow:hidden; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; color:rgba(238,242,255,.78);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      padding:8px 12px;
+      border-radius: 999px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.12);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      letter-spacing:-.5px;
+      line-height:1.08;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.6;
+      max-width: 62ch;
+    }
+    .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:650;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+    .btn:hover{ background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.24); }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(96,165,250,.95), rgba(167,139,250,.92));
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn-primary:hover{ filter:brightness(1.04); }
+    .mini{
+      margin-top:16px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero-visual{
+      padding:22px;
+      overflow:hidden;
+      position:relative;
+    }
+    .grid-bg{
+      position:absolute; inset:-2px;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 38px 38px;
+      opacity: .25;
+      mask-image: radial-gradient(closest-side, rgba(0,0,0,1), rgba(0,0,0,.2));
+      pointer-events:none;
+    }
+
+    /* Sections */
+    section{ padding: 22px 0; }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin: 18px 0 14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 62ch;
+    }
+
+    .cols{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .span-6{ grid-column: span 6; }
+    .span-4{ grid-column: span 4; }
+    .span-8{ grid-column: span 8; }
+    .span-12{ grid-column: span 12; }
+    @media (max-width: 980px){
+      .span-6,.span-4,.span-8{ grid-column: span 12; }
+    }
+
+    .panel{ padding:18px; }
+    .panel h3{ margin:0 0 10px; font-size:16px; letter-spacing:-.1px; }
+    .panel p{ margin:0; color:var(--muted); line-height:1.6; font-size:14px; }
+    .list{ margin:10px 0 0; padding:0; list-style:none; display:grid; gap:10px; }
+    .li{
+      display:flex; gap:12px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .li strong{ display:block; font-size:14px; }
+    .li span{ display:block; margin-top:2px; color:var(--muted); font-size:13px; line-height:1.5; }
+
+    .icon{
+      width:34px; height:34px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      flex: 0 0 auto;
+    }
+
+    /* Badge strip */
+    .badges{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(238,242,255,.86);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 980px){
+      .contact-grid{ grid-template-columns:1fr; }
+    }
+    form{ display:grid; gap:10px; }
+    label{ font-size: 13px; color: rgba(238,242,255,.88); }
+    input, textarea, select{
+      width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 12px 12px;
+      outline:none;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.0);
+    }
+    textarea{ min-height: 130px; resize: vertical; }
+    input:focus, textarea:focus, select:focus{ border-color: rgba(96,165,250,.55); box-shadow: 0 0 0 4px rgba(96,165,250,.14); }
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    @media (max-width: 680px){ .row{ grid-template-columns:1fr; } }
+
+    .fine{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .check{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .check input{ width:18px; height:18px; margin-top:2px; }
+
+    /* Footer + legal */
+    footer{
+      margin-top: 22px;
+      padding: 26px 0 40px;
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.14);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+    @media (max-width: 980px){ .footer-grid{ grid-template-columns:1fr; } }
+
+    .legal{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .legal h3{ margin:0 0 10px; font-size:16px; }
+    .legal p, .legal li{ color: var(--muted); line-height:1.6; font-size: 13px; }
+    .legal ul{ margin:10px 0 0; padding-left: 18px; }
+    .legal a{ color: rgba(96,165,250,.95); }
+    .mutedline{ color: rgba(238,242,255,.60); font-size: 12px; margin-top: 10px; }
+
+    /* Small helper */
+    .sep{ height:1px; background: var(--line); margin: 12px 0; }
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Start">
+        <div class="brand-mark" aria-hidden="true">
+          <!-- Shield Icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="white" stroke-width="1.8" />
+            <path d="M8.8 12.1l2.2 2.2 4.8-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Cybersicherheit</div>
+          <div class="brand-sub">Nachhaltiger Schutz vor Cyberkriminalität</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation">
+        <a href="#schutz">Schutzprinzipien</a>
+        <a href="#geraete">Geräte absichern</a>
+        <a href="#notfall">Notfallplan</a>
+        <a href="#checkliste">Checkliste</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="card hero-card">
+          <div class="kicker"><span class="dot"></span> Praxisnah • verständlich • ohne Technik-Blabla</div>
+          <h1>So schützt du dich nachhaltig vor Cyberkriminalität – auf Handy, Laptop & Co.</h1>
+          <p class="lead">
+            Cyberangriffe sind selten „Magie“ – meist sind es <b>Phishing</b>, schwache Passwörter, fehlende Updates oder unsichere Backups.
+            Diese Seite zeigt dir robuste Schritte, die langfristig wirken: <b>Konten absichern</b>, <b>Geräte härten</b>, <b>Daten sichern</b> und <b>richtig reagieren</b>.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#checkliste">
+              <!-- Icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 11l2 2 4-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 4h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="white" stroke-width="1.8"/>
+              </svg>
+              Sicherheits-Checkliste
+            </a>
+            <a class="btn" href="#kontakt">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 8l8 6 8-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" stroke="white" stroke-width="1.8" />
+              </svg>
+              Kontakt / Hinweis geben
+            </a>
+          </div>
+
+          <div class="mini" aria-label="Highlights">
+            <span class="pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2v6" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M12 16v6" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M4.2 4.2l4.2 4.2" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M15.6 15.6l4.2 4.2" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M2 12h6" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M16 12h6" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M4.2 19.8l4.2-4.2" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M15.6 8.4l4.2-4.2" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              Updates & Härtung
+            </span>
+            <span class="pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7v4l-2 2v2h18v-2l-2-2V9a7 7 0 0 0-7-7Z" stroke="white" stroke-width="1.7"/>
+                <path d="M9 19a3 3 0 0 0 6 0" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              MFA statt Hoffnung
+            </span>
+            <span class="pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16v10H4z" stroke="white" stroke-width="1.7"/>
+                <path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="white" stroke-width="1.7"/>
+              </svg>
+              Verschlüsselung
+            </span>
+            <span class="pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v6l4 2" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 12a9 9 0 1 1-9-9" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              Backup-Routine
+            </span>
+          </div>
+        </div>
+
+        <!-- Visual card with device illustration -->
+        <div class="card hero-visual" aria-label="Illustration: Smartphone und Geräte">
+          <div class="grid-bg" aria-hidden="true"></div>
+
+          <!-- Device Illustration (SVG) -->
+          <svg viewBox="0 0 520 460" width="100%" height="100%" role="img" aria-label="Smartphone, Laptop, Tablet – digitale Geräte">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(96,165,250,0.95)"/>
+                <stop offset="1" stop-color="rgba(167,139,250,0.95)"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(34,197,94,0.85)"/>
+                <stop offset="1" stop-color="rgba(96,165,250,0.55)"/>
+              </linearGradient>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+                <feColorMatrix in="blur" type="matrix"
+                  values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 .35 0"/>
+              </filter>
+            </defs>
+
+            <!-- glow blobs -->
+            <circle cx="140" cy="120" r="85" fill="url(#g1)" filter="url(#soft)"/>
+            <circle cx="390" cy="170" r="90" fill="url(#g2)" filter="url(#soft)"/>
+
+            <!-- Laptop -->
+            <rect x="85" y="245" rx="18" ry="18" width="260" height="155" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.16)"/>
+            <rect x="105" y="265" rx="14" ry="14" width="220" height="95" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)"/>
+            <rect x="70" y="396" rx="18" ry="18" width="290" height="22" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+            <rect x="160" y="403" rx="10" ry="10" width="110" height="8" fill="rgba(255,255,255,0.10)"/>
+
+            <!-- Tablet -->
+            <rect x="330" y="260" rx="20" ry="20" width="135" height="165" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)"/>
+            <rect x="345" y="278" rx="14" ry="14" width="105" height="125" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)"/>
+
+            <!-- Phone -->
+            <rect x="270" y="80" rx="28" ry="28" width="140" height="235" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
+            <rect x="287" y="110" rx="22" ry="22" width="106" height="170" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.12)"/>
+            <circle cx="340" cy="98" r="5" fill="rgba(255,255,255,0.30)"/>
+            <rect x="322" y="295" rx="10" ry="10" width="36" height="10" fill="rgba(255,255,255,0.12)"/>
+
+            <!-- Shield icon on phone -->
+            <path d="M340 138l30 15v22c0 17-12 30-30 34-18-4-30-17-30-34v-22l30-15Z"
+                  fill="rgba(96,165,250,0.18)" stroke="rgba(96,165,250,0.70)" stroke-width="2"/>
+            <path d="M328 175l9 9 18-20" fill="none" stroke="rgba(34,197,94,0.85)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- small icons "logos" -->
+            <g opacity="0.9">
+              <rect x="112" y="286" rx="10" ry="10" width="64" height="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)"/>
+              <text x="122" y="302" font-size="12" fill="rgba(238,242,255,0.80)" font-family="ui-sans-serif,system-ui">MFA</text>
+
+              <rect x="182" y="286" rx="10" ry="10" width="92" height="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)"/>
+              <text x="192" y="302" font-size="12" fill="rgba(238,242,255,0.80)" font-family="ui-sans-serif,system-ui">Backups</text>
+
+              <rect x="112" y="316" rx="10" ry="10" width="96" height="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)"/>
+              <text x="122" y="332" font-size="12" fill="rgba(238,242,255,0.80)" font-family="ui-sans-serif,system-ui">Updates</text>
+            </g>
+          </svg>
+
+          <div class="badges" aria-label="Badges">
+            <span class="badge" title="Mehr-Faktor-Authentifizierung">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="rgba(238,242,255,.92)" stroke-width="1.7"/>
+              </svg>
+              MFA-Standard
+            </span>
+            <span class="badge" title="Passwortmanager & starke Passwörter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="rgba(238,242,255,.92)" stroke-width="1.7"/>
+                <rect x="6" y="11" width="12" height="10" rx="2" stroke="rgba(238,242,255,.92)" stroke-width="1.7"/>
+              </svg>
+              Passwort-Hygiene
+            </span>
+            <span class="badge" title="Verschlüsselung, Gerätesperre">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 12h16" stroke="rgba(238,242,255,.92)" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M7 12v7h10v-7" stroke="rgba(238,242,255,.92)" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              Daten schützen
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHUTZPRINZIPIEN -->
+    <section id="schutz">
+      <div class="section-title">
+        <div>
+          <h2>Die 4 Schutzprinzipien (die wirklich wirken)</h2>
+          <p>Wenn du diese Prinzipien sauber umsetzt, bist du in der Praxis schon sehr gut geschützt.</p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="card panel span-6">
+          <h3>1) Konten absichern (Identität)</h3>
+          <p>Die meisten „Hacks“ starten beim Konto: E-Mail, Apple/Google, Banking, Messenger.</p>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>MFA aktivieren (App/Hardware-Key)</strong>
+                <span>Für E-Mail & Hauptkonten Pflicht. SMS nur als Notlösung.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="white" stroke-width="1.7"/>
+                  <rect x="6" y="11" width="12" height="10" rx="2" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Passwortmanager + einzigartige Passwörter</strong>
+                <span>Nie wieder „eins für alles“. Länge gewinnt gegen Komplexität.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card panel span-6">
+          <h3>2) Geräte härten (Angriffsfläche senken)</h3>
+          <p>Angreifer lieben veraltete Systeme, offene Rechte und „Bequemlichkeit“.</p>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v6l4 2" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12a9 9 0 1 1-9-9" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Updates automatisieren</strong>
+                <span>OS, Browser, Apps, Router-Firmware. „Später“ ist das Einfallstor.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 7h16v10H4z" stroke="white" stroke-width="1.7"/>
+                  <path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Gerätesperre + Verschlüsselung</strong>
+                <span>PIN/Passcode (nicht 0000), Biometrie, „Find My“/Geräteortung aktiv.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card panel span-6">
+          <h3>3) Daten sichern (Wiederherstellung)</h3>
+          <p>Backups sind deine Versicherung: gegen Erpressung, Defekt, Verlust, Fehler.</p>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 7H4v10h16V7Z" stroke="white" stroke-width="1.7"/>
+                  <path d="M8 11h8" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>3-2-1-Regel (einfach erklärt)</strong>
+                <span>3 Kopien, 2 Medien (z. B. Cloud + externe Platte), 1 Kopie offline.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 11l2 2 4-5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 4h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Restore testen</strong>
+                <span>Backup ohne Restore-Test ist „Glaube“. 10 Minuten Test sparen Tage Ärger.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card panel span-6">
+          <h3>4) Menschliches Risiko minimieren (Phishing & Tricks)</h3>
+          <p>Cyberkriminalität ist oft Social Engineering – also Manipulation, nicht Technik.</p>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 8l8 6 8-6" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" stroke="white" stroke-width="1.7" />
+                </svg>
+              </div>
+              <div>
+                <strong>Regel: Link nie „blind“ klicken</strong>
+                <span>Immer Absender, URL, Domain, Druck-Taktik („sofort!“) prüfen.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3l9 4-9 4-9-4 9-4Z" stroke="white" stroke-width="1.7"/>
+                  <path d="M3 7v10l9 4 9-4V7" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>„Zweites Signal“ nutzen</strong>
+                <span>Bei Zahlungen/Logins immer über offiziellen Weg verifizieren (App/Website selbst öffnen).</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GERÄTE -->
+    <section id="geraete">
+      <div class="section-title">
+        <div>
+          <h2>Geräte absichern: Smartphone, PC, Router</h2>
+          <p>Diese Einstellungen bringen viel Sicherheit bei wenig Aufwand.</p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="card panel span-4">
+          <h3>Smartphone (iPhone / Android)</h3>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <rect x="7" y="2" width="10" height="20" rx="2.5" stroke="white" stroke-width="1.7"/>
+                  <path d="M10 19h4" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Starker Geräte-Code</strong>
+                <span>6+ Ziffern oder alphanumerisch; „Bildschirmzeit“/Schutz bei Diebstahl nutzen.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Hauptkonto schützen</strong>
+                <span>Apple-ID/Google-Konto mit MFA & Wiederherstellungscodes sichern.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 7h10v10H7z" stroke="white" stroke-width="1.7"/>
+                  <path d="M9 9h6v6H9z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>App-Rechte ausmisten</strong>
+                <span>Standort/Mikro/Kamera nur „bei Nutzung“, unnötige Berechtigungen weg.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card panel span-4">
+          <h3>PC / Laptop (Windows / macOS)</h3>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6h16v10H4z" stroke="white" stroke-width="1.7"/>
+                  <path d="M8 20h8" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Standard-User statt Admin</strong>
+                <span>Admin nur bei Installationen. Das stoppt viele Schadaktionen.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="white" stroke-width="1.7"/>
+                  <rect x="6" y="11" width="12" height="10" rx="2" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Vollverschlüsselung</strong>
+                <span>BitLocker (Win) / FileVault (Mac) – besonders bei Laptop-Diebstahl.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v6l4 2" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M21 12a9 9 0 1 1-9-9" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Updates + Browser-Hygiene</strong>
+                <span>Auto-Updates aktiv, Erweiterungen minimal, Downloads nur aus vertrauenswürdigen Quellen.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card panel span-4">
+          <h3>Router / WLAN</h3>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 18h.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M4 10a12 12 0 0 1 16 0" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M7 13a8 8 0 0 1 10 0" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M10 16a4 4 0 0 1 4 0" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>WPA2/WPA3 + starkes WLAN-Passwort</strong>
+                <span>WPS aus; Gastnetz für Besucher/IoT-Geräte.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12h16" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M12 4v16" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Fernzugriff deaktivieren</strong>
+                <span>Router-Admin nur lokal; Standard-Passwort unbedingt ändern.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 7H4v10h16V7Z" stroke="white" stroke-width="1.7"/>
+                  <path d="M8 11h8" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Firmware aktuell halten</strong>
+                <span>Viele Router-Lücken sind „alt“. Update-Routine lohnt sich.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTFALL -->
+    <section id="notfall">
+      <div class="section-title">
+        <div>
+          <h2>Notfallplan: Wenn du einen Angriff vermutest</h2>
+          <p>Ruhig bleiben, sauber dokumentieren – und zuerst die wichtigsten Konten retten.</p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="card panel span-8">
+          <h3>Schrittfolge (bewährt)</h3>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>1) Haupt-E-Mail sichern</strong>
+                <span>Passwort ändern (unique), MFA neu setzen, Wiederherstellung prüfen, aktive Sessions abmelden.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="white" stroke-width="1.7"/>
+                  <rect x="6" y="11" width="12" height="10" rx="2" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>2) Apple-ID/Google + Banking absichern</strong>
+                <span>MFA, neue Passwörter, Geräte-Liste prüfen, verdächtige Apps/Token entfernen.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3h18v14H3z" stroke="white" stroke-width="1.7"/>
+                  <path d="M7 21h10" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M7 7h10" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>3) Gerät trennen & prüfen</strong>
+                <span>WLAN aus, Backups sichern, dann systematisch prüfen (Updates, Scans, Rechte, Profile, Apps).</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 19l4-4 3 3 7-7" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19 11V5h-6" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>4) Dokumentieren</strong>
+                <span>Zeiten, E-Mails/SMS, Screenshots, Logins, IP-Hinweise – sauber sammeln.</span>
+              </div>
+            </li>
+          </ul>
+          <div class="sep"></div>
+          <p class="fine">
+            Tipp: Wenn du dir unsicher bist, beginne immer mit dem <b>Haupt-E-Mail-Konto</b>. Darüber laufen meist Passwort-Resets für alle anderen Konten.
+          </p>
+        </div>
+
+        <div class="card panel span-4">
+          <h3>Was du vermeiden solltest</h3>
+          <ul class="list">
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l10 18H2L12 2Z" stroke="white" stroke-width="1.7"/>
+                  <path d="M12 9v5" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M12 17h.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Im Stress alles löschen</strong>
+                <span>Beweise gehen verloren. Erst sichern & dokumentieren.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4l16 16" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M7 7h10v10H7z" stroke="white" stroke-width="1.7"/>
+                </svg>
+              </div>
+              <div>
+                <strong>„Security-Tools“ aus dubiosen Quellen</strong>
+                <span>Viele „Cleaner“ sind selbst riskant. Nur seriöse Quellen verwenden.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLISTE -->
+    <section id="checkliste">
+      <div class="section-title">
+        <div>
+          <h2>Interaktive Sicherheits-Checkliste</h2>
+          <p>Setze die Haken – und du hast eine solide Basis. (Deine Haken bleiben nur im Browser, es wird nichts übertragen.)</p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="card panel span-12">
+          <div class="cols" style="gap:10px">
+            <div class="check span-4">
+              <input type="checkbox" id="c1" />
+              <label for="c1"><b>MFA</b> für E-Mail + Apple/Google aktiv</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c2" />
+              <label for="c2"><b>Passwortmanager</b> + einzigartige Passwörter</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c3" />
+              <label for="c3"><b>Updates</b> automatisch (OS/Apps/Router)</label>
+            </div>
+
+            <div class="check span-4">
+              <input type="checkbox" id="c4" />
+              <label for="c4"><b>Backups</b> (3-2-1) + Restore getestet</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c5" />
+              <label for="c5"><b>Gerätesperre</b> stark + Geräteortung aktiv</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c6" />
+              <label for="c6"><b>Phishing-Regel</b>: Links nur über offiziellen Weg prüfen</label>
+            </div>
+
+            <div class="check span-4">
+              <input type="checkbox" id="c7" />
+              <label for="c7"><b>App-Rechte</b> reduziert (Kamera/Mikro/Standort)</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c8" />
+              <label for="c8"><b>WLAN</b>: WPA2/WPA3, WPS aus, Gastnetz</label>
+            </div>
+            <div class="check span-4">
+              <input type="checkbox" id="c9" />
+              <label for="c9"><b>Notfall-Plan</b> (Daten sichern, dokumentieren, Konten retten)</label>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+          <p class="fine">
+            Wenn du willst, kannst du diese Checkliste auch ausdrucken. (Strg+P / Cmd+P).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+      <div class="section-title">
+        <div>
+          <h2>Kontakt</h2>
+          <p>Hinweis geben, Presseanfrage oder Rückfrage – hier erreichst du mich direkt.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card panel">
+          <h3>Kontakt-E-Mail</h3>
+          <p>
+            <b>E-Mail:</b> <a href="mailto:lvrjelinek@gmail.com">lvrjelinek@gmail.com</a>
+          </p>
+          <div class="sep"></div>
+          <p class="fine">
+            Hinweis: E-Mails sind wie Postkarten, wenn sie unverschlüsselt versendet werden. Für besonders sensible Inhalte:
+            nutze möglichst eine sichere Übermittlung (z. B. verschlüsselte Datei + getrennte Passwort-Übermittlung).
+          </p>
+
+          <div class="badges" style="margin-top:14px">
+            <span class="badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 8l8 6 8-6" stroke="rgba(238,242,255,.92)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" stroke="rgba(238,242,255,.92)" stroke-width="1.7" />
+              </svg>
+              Direktkontakt
+            </span>
+            <span class="badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4Z" stroke="rgba(238,242,255,.92)" stroke-width="1.7"/>
+              </svg>
+              DSGVO-Hinweis
+            </span>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <h3>Kontaktformular</h3>
+          <p class="fine">
+            Dieses Formular öffnet beim Absenden dein E-Mail-Programm (mailto). So wird ohne externe Dienste gearbeitet.
+            Wenn du ein „echtes“ Server-Formular willst, sag mir kurz, bei welchem Hoster du bist – dann baue ich dir ein datenschutzsauberes Endpoint-Setup.
+          </p>
+
+          <form id="contactForm" novalidate>
+            <div class="row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Max Mustermann" />
+              </div>
+              <div>
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="name@domain.de" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="topic">Thema</label>
+                <select id="topic" name="topic">
+                  <option>Allgemeine Anfrage</option>
+                  <option>Hinweis / Beobachtung</option>
+                  <option>Presseanfrage</option>
+                  <option>Vorfall / Verdacht auf Angriff</option>
+                </select>
+              </div>
+              <div>
+                <label for="urgency">Dringlichkeit</label>
+                <select id="urgency" name="urgency">
+                  <option>Normal</option>
+                  <option>Hoch</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" placeholder="Bitte beschreibe kurz, worum es geht (Was? Wann? Wo? Welche Geräte/Konten?)"></textarea>
+            </div>
+
+            <div class="check">
+              <input type="checkbox" id="consent" required />
+              <label for="consent">
+                Ich willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden.
+                Weitere Infos in der <a href="#datenschutz">Datenschutzerklärung</a>.
+              </label>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 12l16-8-7 16-2-7-7-1Z" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Nachricht per E-Mail senden
+            </button>
+
+            <p class="fine" id="formHint" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer-grid">
+      <div class="legal">
+        <h3>Über diese Seite</h3>
+        <p>
+          Diese Website informiert über Maßnahmen zum Schutz vor Cyberkriminalität.
+          Inhalte werden nach bestem Wissen erstellt, können aber keine individuelle Sicherheits- oder Rechtsberatung ersetzen.
+        </p>
+        <div class="sep"></div>
+        <p class="mutedline">Stand: 20.12.2025 • Ohne Tracking/Analytics • Keine externen CDNs</p>
+      </div>
+
+      <div class="legal">
+        <h3>Schnellzugriff</h3>
+        <ul>
+          <li><a href="#impressum">Impressum</a></li>
+          <li><a href="#datenschutz">Datenschutzerklärung</a></li>
+          <li><a href="mailto:lvrjelinek@gmail.com">lvrjelinek@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LEGAL SECTIONS -->
+    <div class="cols" style="margin-top:14px">
+      <div class="legal span-6" id="impressum">
+        <h3>Impressum</h3>
+        <p><b>Angaben gemäß § 5 DDG</b></p>
+        <p>
+          Oliver Stefan Jelinek<br/>
+          Eichertstrasse 17<br/>
+          89518 Heidenheim<br/>
+          Deutschland
+        </p>
+        <p>
+          <b>Kontakt</b><br/>
+          E-Mail: <a href="mailto:lvrjelinek@gmail.com">lvrjelinek@gmail.com</a>
+        </p>
+
+        <div class="sep"></div>
+
+        <p><b>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</b> (sofern anwendbar)</p>
+        <p>
+          Oliver Stefan Jelinek<br/>
+          Eichertstrasse 17<br/>
+          89518 Heidenheim<br/>
+          Deutschland
+        </p>
+
+        <div class="sep"></div>
+
+        <p><b>Haftung für Inhalte</b></p>
+        <p>
+          Inhalte wurden mit Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden.
+        </p>
+        <p><b>Haftung für Links</b></p>
+        <p>
+          Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte sind stets die jeweiligen Anbieter verantwortlich.
+        </p>
+      </div>
+
+      <div class="legal span-6" id="datenschutz">
+        <h3>Datenschutzerklärung (DSGVO)</h3>
+
+        <p><b>1. Verantwortlicher</b></p>
+        <p>
+          Oliver Stefan Jelinek<br/>
+          Eichertstrasse 17<br/>
+          89518 Heidenheim<br/>
+          Deutschland<br/>
+          E-Mail: <a href="mailto:lvrjelinek@gmail.com">lvrjelinek@gmail.com</a>
+        </p>
+
+        <p><b>2. Allgemeine Hinweise</b></p>
+        <p>
+          Diese Website ist so umgesetzt, dass keine Tracking- oder Analyse-Tools eingesetzt werden und keine externen Ressourcen (z. B. Google-Fonts/CDNs) geladen werden.
+        </p>
+
+        <p><b>3. Zugriffsdaten / Server-Logfiles</b></p>
+        <p>
+          Beim Besuch dieser Website werden durch den Hosting-Provider i. d. R. automatisch Informationen in Server-Logfiles erhoben (z. B. IP-Adresse,
+          Datum/Uhrzeit, aufgerufene Seite, Referrer-URL, User-Agent, Statuscodes). Die Verarbeitung erfolgt zur Gewährleistung der Sicherheit und Stabilität
+          der Website (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+        <p class="fine">
+          Bitte ergänzen: Hosting-Provider/Serverstandort/Log-Aufbewahrungsdauer (z. B. 7–14 Tage) nach deinen konkreten Hosting-Einstellungen.
+        </p>
+
+        <p><b>4. Kontaktaufnahme per E-Mail</b></p>
+        <p>
+          Wenn du per E-Mail Kontakt aufnimmst, werden deine Angaben zur Bearbeitung der Anfrage verarbeitet
+          (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – vorvertragliche Maßnahmen/Kommunikation – oder Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an der Beantwortung von Anfragen).
+          Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+        </p>
+
+        <p><b>5. Kontaktformular</b></p>
+        <p>
+          Dieses Kontaktformular arbeitet ohne externen Dienst: Beim Absenden wird eine E-Mail über dein lokales E-Mail-Programm vorbereitet (mailto).
+          Dabei werden die von dir eingegebenen Daten ausschließlich zur Erstellung der E-Mail genutzt.
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Bearbeitung deiner Anfrage) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kommunikation).
+        </p>
+
+        <p><b>6. Cookies / Tracking</b></p>
+        <p>Auf dieser Website werden keine Tracking-Cookies zu Analyse- oder Marketingzwecken eingesetzt.</p>
+
+        <p><b>7. Deine Rechte</b></p>
+        <p>
+          Du hast nach DSGVO insbesondere das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17),
+          Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch (Art. 21).
+        </p>
+
+        <p><b>8. Beschwerderecht bei der Aufsichtsbehörde (Baden-Württemberg)</b></p>
+        <p>
+          Du kannst dich bei einer Datenschutzaufsichtsbehörde beschweren. Zuständig ist z. B. der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg.
+          Ab <b>22.12.2025</b>: Heilbronner Straße 35, 70191 Stuttgart (Postfach 10 29 32, 70025 Stuttgart; E-Mail: poststelle@lfdi.bwl.de). 
+        </p>
+
+        <p class="mutedline">Stand: 20.12.2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', id);
+      });
+    });
+
+    // Contact form -> mailto (privacy-friendly, no external service)
+    const form = document.getElementById('contactForm');
+    const hint = document.getElementById('formHint');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      hint.textContent = '';
+
+      const consent = document.getElementById('consent');
+      if (!consent.checked) {
+        hint.textContent = 'Bitte bestätige die Einwilligung (DSGVO), damit die Nachricht vorbereitet werden kann.';
+        return;
+      }
+
+      const name = (document.getElementById('name').value || '').trim();
+      const email = (document.getElementById('email').value || '').trim();
+      const topic = document.getElementById('topic').value;
+      const urgency = document.getElementById('urgency').value;
+      const message = (document.getElementById('message').value || '').trim();
+
+      const to = 'lvrjelinek@gmail.com';
+      const subject = `[Kontakt] ${topic} – Dringlichkeit: ${urgency}`;
+      const body =
+`Hallo Oliver,
+
+${message || '(keine Nachricht eingegeben)'}
+
+---
+Absender:
+Name: ${name || '-'}
+E-Mail: ${email || '-'}
+
+Hinweis: Bitte prüfen Sie diese Angaben vor dem Versand.
+`;
+
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+
+      hint.textContent = 'Dein E-Mail-Programm sollte sich jetzt öffnen. Falls nicht: nutze die E-Mail-Adresse oben.';
+    });
+  </script>
+</body>
+</html>
